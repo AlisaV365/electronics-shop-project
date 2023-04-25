@@ -42,6 +42,20 @@ class Item:
         self.quantity = quantity
         Item.all.append(self)
 
+    def __repr__(self):
+        """
+        Магический метод repr() для возвращения строкового представления объекта.
+        :return: строку в формате 'Item(name, price, quantity)'
+        """
+        return f"Item('{self.__name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        """
+        Магический метод str() для возвращения строкового представления объекта.
+        :return: строку в формате 'name'
+        """
+        return self.__name
+
     @property
     def name(self):
         return self.__name
@@ -68,3 +82,8 @@ class Item:
         """
        скидка для конкретного товара.
        """
+
+
+
+
+

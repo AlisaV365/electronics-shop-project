@@ -38,3 +38,12 @@ def apply_discount():
     assert apply_discount(50, 0.1) == 45
     assert apply_discount(100, 0) == 100
     assert apply_discount('100', 0.2) == None
+
+
+def test_item_str():
+    item = Item("Смартфон", 111, 2)
+    assert str(item) == "Смартфон"
+
+def test_item_repr():
+    item = Item("Смартфон", 10000, 20)
+    assert repr(item) == "Item('Смартфон', 10000, 20)"
