@@ -12,10 +12,6 @@ class Phone(Item):
     def __add__(self, other):
         return self.quantity + other.quantity
 
-
     def __repr__(self):
         # метод для отображения информации об объекте класса
         return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity}, {self.number_of_sim})"
-
-
-

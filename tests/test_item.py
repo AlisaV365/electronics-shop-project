@@ -6,7 +6,7 @@ from src.item import Item
 
 @pytest.fixture
 def item_obj():
-    return Item('name', 2, 12,)
+    return Item('name', 2, 12, )
 
 
 def test_func(item_obj):
@@ -31,7 +31,7 @@ def test_string_to_number():
 def calculate_total_price():
     assert calculate_total_price(3, 10) == 30
     assert calculate_total_price(5, 5) == 25
-    assert calculate_total_price(2, 1000) == 2000
+    assert calculate_total_price(10000, 20) == 200000
 
 
 def apply_discount():
@@ -40,13 +40,16 @@ def apply_discount():
     assert apply_discount(100, 0) == 100
     assert apply_discount('100', 0.2) == None
 
+
 def test_phone_price():
     phone = Phone("iPhone 14", 120_000, 5, 2)
     assert phone.price == 120_000
 
+
 def test_phone_number_of_sim():
     phone = Phone("iPhone 14", 120_000, 5, 2)
     assert phone.number_of_sim == 2
+
 
 def test__str__():
     item1 = Item("Смартфон", 10000, 20)
@@ -64,12 +67,15 @@ def test__add__():
     assert item1 + item2 == 30
 
 
-def test_item_instance():
+def test_item_isinstance():
     # используется для проверки принадлежности объекта к определенному классу
     item = Item("test_name", 10.50, 5)
     assert isinstance(item, Item)
+
 
 def test_item_issubclass():
     # используется для проверки, наследуется ли какой-либо класс от другого
     Phone = Item
     assert issubclass(Phone, Item)
+
+
