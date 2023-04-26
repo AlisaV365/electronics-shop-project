@@ -1,11 +1,12 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 import pytest
+from src.phone import Phone
 from src.item import Item
 
 
 @pytest.fixture
 def item_obj():
-    return Item('name', 2, 12)
+    return Item('name', 2, 12,)
 
 
 def test_func(item_obj):
@@ -39,11 +40,36 @@ def apply_discount():
     assert apply_discount(100, 0) == 100
     assert apply_discount('100', 0.2) == None
 
+def test_phone_price():
+    phone = Phone("iPhone 14", 120_000, 5, 2)
+    assert phone.price == 120_000
 
-def test_item_str():
-    item = Item("Смартфон", 111, 2)
-    assert str(item) == "Смартфон"
+def test_phone_number_of_sim():
+    phone = Phone("iPhone 14", 120_000, 5, 2)
+    assert phone.number_of_sim == 2
 
-def test_item_repr():
-    item = Item("Смартфон", 10000, 20)
-    assert repr(item) == "Item('Смартфон', 10000, 20)"
+def test__str__():
+    item1 = Item("Смартфон", 10000, 20)
+    assert str(item1) == "Смартфон"
+
+
+def test__repr__():
+    item1 = Item("Смартфон", 10000, 20)
+    assert repr(item1) == "Item('Смартфон', 10000, 20)"
+
+
+def test__add__():
+    item1 = Item("Смартфон", 10000, 20)
+    item2 = Item("iPhone", 100_000, 10)
+    assert item1 + item2 == 30
+
+
+def test_item_instance():
+    # используется для проверки принадлежности объекта к определенному классу
+    item = Item("test_name", 10.50, 5)
+    assert isinstance(item, Item)
+
+def test_item_issubclass():
+    # спользуется для проверки, наследуется ли какой-либо класс от другого
+    Phone = Item
+    assert issubclass(Phone, Item)

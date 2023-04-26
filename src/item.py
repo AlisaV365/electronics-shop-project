@@ -42,18 +42,18 @@ class Item:
         self.quantity = quantity
         Item.all.append(self)
 
+    def __add__(self, other):
+        if not isinstance(other, Item):
+            raise ValueError('Нельзя сложить Phone или Item с экземплярами не Phone или Item классов.')
+        return self.quantity + other.quantity
+
+
     def __repr__(self):
-        """
-        Магический метод repr() для возвращения строкового представления объекта.
-        :return: строку в формате 'Item(name, price, quantity)'
-        """
+        #  метод для отображения информации об объекте класса для разработчиков
         return f"Item('{self.__name}', {self.price}, {self.quantity})"
 
     def __str__(self):
-        """
-        Магический метод str() для возвращения строкового представления объекта.
-        :return: строку в формате 'name'
-        """
+        #  метод для отображения информации об объекте класса для пользователей
         return self.__name
 
     @property
