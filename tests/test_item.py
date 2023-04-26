@@ -70,6 +70,6 @@ def test_item_instance():
     assert isinstance(item, Item)
 
 def test_item_issubclass():
-    # спользуется для проверки, наследуется ли какой-либо класс от другого
+    # используется для проверки, наследуется ли какой-либо класс от другого
     Phone = Item
     assert issubclass(Phone, Item)
