@@ -1,3 +1,4 @@
+import pytest
 from src.phone import Phone
 
 phone1 = Phone("iPhone", 100_000, 10, 2)
@@ -26,7 +27,12 @@ def test_phone_isinstance():
     assert isinstance(phone, Phone)
 
 
-def __add__(self, other):
-    if not isinstance(other, Phone):
-        raise ValueError('Нельзя складывать `Phone` или `Item` с экземплярами не `Phone` или `Item` классов.')
-    return self.quantity + other.quantity
+def test__add__():
+    phone1 = Phone("Смартфон", 10000, 20, 2)
+    phone2 = Phone("iPhone", 100_000, 10, 2)
+    assert phone1 + phone2 == 30
+
+def test_add_phone_and_non_phone():
+    phone1 = Phone("nokia", 1300, 10, 1)
+    with pytest.raises(TypeError):
+        phone1 + "телефон"

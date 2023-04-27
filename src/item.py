@@ -42,11 +42,6 @@ class Item:
         self.quantity = quantity
         Item.all.append(self)
 
-    def __add__(self, other):
-        if not isinstance(other, Item):
-            raise ValueError('Нельзя сложить Phone или Item с экземплярами не Phone или Item классов.')
-        return self.quantity + other.quantity
-
 
     def __repr__(self):
         #  метод для отображения информации об объекте класса для разработчиков
@@ -55,6 +50,12 @@ class Item:
     def __str__(self):
         #  метод для отображения информации об объекте класса для пользователей
         return self.__name
+
+    def __add__(self, other):
+        if isinstance(other, Item):
+            return self.quantity + other.quantity
+        raise TypeError("unsupported operand type(s) for +: '{}' and '{}'".format(type(self), type(other)))
+
 
     @property
     def name(self):
@@ -82,6 +83,8 @@ class Item:
         """
        скидка для конкретного товара.
        """
+
+
 
 
 

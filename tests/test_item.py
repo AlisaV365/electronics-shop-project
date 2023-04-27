@@ -61,10 +61,10 @@ def test__repr__():
     assert repr(item1) == "Item('Смартфон', 10000, 20)"
 
 
-def test__add__():
-    item1 = Item("Смартфон", 10000, 20)
-    item2 = Item("iPhone", 100_000, 10)
-    assert item1 + item2 == 30
+# def test__add__():
+#     item1 = Item("Смартфон", 10000, 20)
+#     item2 = Item("iPhone", 100_000, 10)
+#     assert item1 + item2 == 30
 
 
 def test_item_isinstance():
@@ -77,5 +77,10 @@ def test_item_issubclass():
     # используется для проверки, наследуется ли какой-либо класс от другого
     Phone = Item
     assert issubclass(Phone, Item)
+
+def test_add_item_and_non_item():
+    item1 = Item("apple", 2000, 2)
+    with pytest.raises(TypeError):
+        item1 + "смартфон"
 
 
