@@ -1,19 +1,26 @@
-from src.item import Item
+from src import item
 
 
-class KeyboardMixinLog():
-    def __init__(self):
-        self.language = None
+class MixinLanguage:
+    __language = 'EN'
 
-    def change_lang(self):
-        if self.language == 'EN':
-            self.language = 'RU'
+    @property
+    def language(self):
+        # Сеттер
+        return self.__language
+
+    @classmethod
+    def change_lang(cls):
+        # смена раскладки клавиатуры
+        if cls.__language == 'EN':
+            cls.__language = 'RU'
         else:
-            self.language = 'EN'
-        return self
+            cls.__language = 'EN'
+        return cls
 
 
-class Keyboard(Item, KeyboardMixinLog):
-    def __init__(self, name: str, price: float, quantity: int, language='EN') -> None:
+class Keyboard(item.Item, MixinLanguage):
+
+    def __init__(self, name: str, price: float, quantity: int) -> None:
         super().__init__(name, price, quantity)
-        self.language = language
+
