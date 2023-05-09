@@ -1,10 +1,10 @@
 import pytest
-from src.keyboard import Keyboard
+from src.keyboard import KeyBoard
 
 
 @pytest.fixture
 def item_keyboard():
-    return Keyboard("keyboardSamsung", 123456, 2)
+    return KeyBoard("keyboardSamsung", 123456, 2)
 
 
 def test_lang(item_keyboard):

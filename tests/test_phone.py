@@ -5,6 +5,9 @@ phone1 = Phone("iPhone", 100_000, 10, 2)
 
 
 def test_init():
+    assert phone1.name == 'iPhone'
+    assert phone1.price == 100_000
+    assert phone1.quantity == 10
     assert phone1.number_of_sim == 2
 
 
@@ -32,7 +35,9 @@ def test__add__():
     phone2 = Phone("iPhone", 100_000, 10, 2)
     assert phone1 + phone2 == 30
 
+
 def test_add_phone_and_non_phone():
     phone1 = Phone("nokia", 1300, 10, 1)
     with pytest.raises(TypeError):
         phone1 + "телефон"
+
