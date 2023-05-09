@@ -14,7 +14,7 @@ def test_func(item_obj):
 
 
 def test_disc(item_obj):
-    assert item_obj.apply_discount() == 2
+    assert item_obj.apply_discount() == 1.6
 
 
 def test_calc(item_obj):
@@ -26,6 +26,10 @@ def test_string_to_number():
     assert Item.string_to_number('5.0') == 5
     assert Item.string_to_number('5.5') == 5
     assert Item.string_to_number('abc') is None
+
+def test_name():
+    item = Item('СуперСмартфон', 100, 2)
+    assert item.name == 'СуперСмартфон'
 
 
 def calculate_total_price():
