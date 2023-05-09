@@ -1,5 +1,4 @@
-from src import item
-
+from src.item import Item
 
 class MixinLanguage:
     __language = 'EN'
@@ -9,17 +8,15 @@ class MixinLanguage:
         # Сеттер
         return self.__language
 
-    @classmethod
-    def change_lang(cls):
+    def change_lang(self):
         # смена раскладки клавиатуры
-        if cls.__language == 'EN':
-            cls.__language = 'RU'
+        if self.__language == 'EN':
+            self.__language = 'RU'
         else:
-            cls.__language = 'EN'
-        return cls
+            self.__language = 'EN'
+        return self
 
-
-class Keyboard(item.Item, MixinLanguage):
+class KeyBoard(Item, MixinLanguage):
 
     def __init__(self, name: str, price: float, quantity: int) -> None:
         super().__init__(name, price, quantity)
